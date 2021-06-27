@@ -1,0 +1,35 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+    //component -function component
+    //function name-capital
+    //1 parameter-props
+    // return React Elements(jsx)
+    function Greet(props){
+        console.log(props)
+        return <h1>welcome {props.name} from {props.city}</h1>
+    }
+    const ele=(
+        <div>
+        <Greet neme="ani" city="banglore"/>
+        </div>
+    )
+    ReactDOM.render(ele,document.getElementById('root'))
+
+    </script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,175 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+    const rootHandle=document.getElementById('root')
+class Greet extends React.Component{
+    constructor(){
+        super()
+        this .state={
+            movies:  [
+                        { id: 1, name: 'rush hour', rating:4.1,genre:'action',dateWatched:'2020-04-23'},
+                        { id: 2, name: ' hour', rating:4.4,genre:'action,drama',dateWatched:''}
+                        
+                    ],
+                    id:'',
+                    name:'',
+                    rating:'',
+                    genre:[{action:false},{drama:false},{romance:false},{comedy:false}],
+                    watched:false,
+                    dateWatched:''
+                    
+        }
+    }
+    handleIdChange=(e)=>{
+        const id=e.target.value
+        this.setState({id})
+    }
+    handleNameChange=(e)=>{
+        const name=e.target.value
+        this.setState({name})
+    }
+    handleRatingChange=(e)=>{
+        const rating=e.target.value
+        this.setState({rating})
+    }
+    handleGenreChange=(e)=>{
+        const genre=e.target.checked
+        this.setState(function(prevState){
+            return{
+                genre:!prevState.genre
+            }
+        })
+    }
+    handleWatchedChange=(e)=>{
+        const watched=e.target.checked
+        this.setState(function(prevState){
+            return{
+             watched:!prevState.watched
+            }
+        })
+    }
+          
+       handleDate=(e)=>{
+        const dateWatched=e.target.value
+        this.setState({dateWatched})
+      } 
+
+    handleRemoveChange=(id)=>{
+          this.setState(function(prevState){
+              return{
+                  movies:prevState.movies.filter((ele)=>{
+                     return ele.id !=id
+                  })
+              }
+          })
+    }
+    handleSubmit=(e)=>{
+      e.preventDefault()
+       const formData={id:this.state.id,
+       name:this.state.name,
+       rating:this.state.rating,
+       genre:this.state.genre,
+       watched:this.state.watched,
+       dateWatched:this.state.dateWatched}
+       this.setState(function(prevState){
+            return{
+                movies:prevState.movies.concat(formData),
+               
+                id:'',
+                    name:'',
+                    rating:'',
+                    genre:[{action:false},{drama:false},{romance:false},{comedy:false}],
+                watched:false,
+                dateWatched:''
+            }
+        })
+        
+    }
+
+    
+    render(){
+        return(
+            <div>
+            <h1>movies list-{this.state.movies.length}</h1>
+            <table border="1">
+        <thead>
+            <tr>
+                <th> id </th> 
+                <th> name </th>
+                <th> rating </th> 
+                <th> genre </th> 
+                <th> dateWatched</th> 
+                <th> action </th> 
+                 
+            </tr> 
+        </thead> 
+        <tbody>
+            
+               {this.state.movies.map((ele)=>{
+                   return(
+                        <tr>
+                            <td> { ele.id } </td> 
+                            <td> { ele.name } </td> 
+                            <td> { ele.rating } </td> 
+                            <td>{ele.genre}</td>
+                           <td> { ele.dateWatched } </td>  
+                            <td>  <button onClick={()=>{
+                                this.handleRemoveChange(ele.id)
+                            }}>remove</button> </td> 
+                          
+                            
+                        </tr> 
+                   )
+               })
+               }
+                    
+               
+        </tbody>
+    </table> 
+
+    <h3> Add Movie</h3>
+    <form onSubmit={this. handleSubmit}> 
+    <label>Id</label>
+    <input type='text' value={this.state.id} onChange={this.handleIdChange}/><br/>  
+    <label>Name</label>
+    <input type='text' value={this.state.name} onChange={this.handleNameChange}/><br/>
+    <label>Rating</label>
+    <input type='text' value={this.state.rating} onChange={this.handleRatingChange}/><br/>
+    <label>Genre: Action<input type='checkbox' name='action' checked={this.state.action} onChange={this.handleGenreChange}/>
+        Drama<input type='checkbox' name='drama' checked={this.state.drama} onChange={this.handleGenreChange}/>
+        Romance<input type='checkbox' name='romance' checked={this.state.romance} onChange={this.handleGenreChange}/>
+        Comedy<input type='checkbox' name='comedy' checked={this.state.comedy} onChange={this.handleGenreChange}/>
+   
+   
+   </label><br/>
+   <label>Watched</label>
+    <input type='checkbox' checked={this.state.watched} onChange={this.handleWatchedChange}/><br/>
+ 
+      {this. state.watched  && <label> date  <input type ='date' 
+          value={this.state.dateWatched}
+          onChange={this.handleDate}/>  </label> }
+          <input type='submit' value='submit'/>
+    
+    </form>
+            </div>
+        )
+    }
+}
+ReactDOM.render(<Greet/>,rootHandle)
+    </script>
+</body>
+
+</html>
+
+

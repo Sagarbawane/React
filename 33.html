@@ -1,0 +1,28 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+<script>
+    //Http Methods-GET(READ),POST(CREATE),PUT(UPDATE),DELETE(DESTROY)
+const url='https://jsonplaceholder.typicode.com/users'
+const xhr=new XMLHttpRequest()
+//xhr.open('httpMethod',url)
+xhr.open('GET',url)
+//xhr.send()
+
+xhr.onload=function(){//sucess
+    //console.log(typeof xhr.responseText)
+    const users=JSON.parse(xhr.responseText)
+    console.log(users)
+}
+xhr.onerror=function(){//error
+    console.log(xhr.responseText)
+}
+    
+
+    </script>
+</body>
+
+</html>

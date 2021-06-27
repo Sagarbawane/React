@@ -1,0 +1,56 @@
+<html>
+<title>
+</title>
+<body>
+    <div id="root"></div>
+    
+   
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+        const emp = [{id:'emp 1',name:'abhi',gender:'male'}, {id:'emp 2',name:'radha',gender:'female'} ,
+        {id:'emp 3',name:'jetan',gender:'male'}
+    ]
+   const result= emp.filter(function(ele){
+return ele.gender=='male'
+    })
+    const result1= emp.filter(function(ele){
+return ele.gender=='female'
+    })
+        const ele = (
+            <div>
+            
+
+                <h1>listing emplyee-No of emplyee={result.length}</h1>
+                <ol>
+                    {
+                        result.map(function(result){
+                            return <li> {result.name}</li>
+                    })
+                }
+                </ol>
+            
+            <h1 >listing emplyee-No of emplyee={result1.length}</h1>
+                <ol>
+                    {
+                        result1.map(function(result1){
+                            return <li> {result1.name}</li>
+                    })
+                }
+                </ol>
+
+            </div>
+            
+
+            )  
+
+ReactDOM.render(ele, document.getElementById('root'))
+</script>
+</body>
+
+</html>
+

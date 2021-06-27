@@ -1,0 +1,34 @@
+<html>
+<title>
+</title>
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+
+    const emp = [{id:'emp 1',name:'abhi'}, {id:'emp 2',name:'para g'} ,{id:'emp 3',name:'jetan'}]
+        
+        const ele =(
+            <div>
+                <h1> Listing emp- {emp.length}</h1>
+                <ol>
+                    {
+                        emp.map(function(ele){
+                            return <li> {ele.name}({(ele.id)})</li>
+                    })
+                }
+                </ol>
+            </div>
+            )  
+
+ReactDOM.render(ele, document.getElementById('root'))
+</script>
+</body>
+
+</html>

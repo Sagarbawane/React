@@ -1,0 +1,59 @@
+<html>
+    <head>
+<title>
+</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+
+        function NavBar(props) {
+            return (
+                <div>
+                    <h1> E - Com Store </h1> 
+                    <a href="#">Home</a> <a href="#">Products</a> 
+                </div> 
+            )
+        }
+
+        function Product(props) {
+            return (
+                <div> 
+                    <h3>name - { props.name }</h3> 
+                    <p>price - INR { props.price }</p> 
+                    <p>rating - { props.rating } </p>
+                    <hr/>
+                </div> 
+            ) 
+        }
+        const  storeProducts = [
+                { name: 'emp001', price: 100, rating: 4.1 },
+                { name: 'emp002', price: 200, rating: 4.4 },
+                { name: 'emp003', price: 3000, rating: 4.9 }
+            ]
+        const ele = (
+            <div> 
+            <NavBar/>{
+                storeProducts.map((list)=><Product name={list.name} price={list.price} rating={list.rating} />)
+                    
+            }
+                
+            </div> 
+        )
+
+        ReactDOM.render(ele, document.getElementById('root'))
+
+    </script>
+</body>
+
+</html>

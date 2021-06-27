@@ -1,0 +1,61 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+    const rootHandle=document.getElementById('root')
+    class Greet extends React.Component{
+        constructor(){
+            super()
+            this.state={
+                letter:'awesome',
+              
+            }
+        }
+       
+        handleRandomClicked=()=>{
+           
+            this.setState(function(prevState){
+                if(prevState.letter==prevState.letter.toLowerCase()){
+                return{
+                   
+                   letter:prevState.letter.toUpperCase()
+                }
+                }
+              else
+                    return{
+                   
+                   letter:prevState.letter.toLowerCase()
+                    }
+              
+                })
+            
+        }
+       
+      
+        render(){
+            return(
+                <div>
+                 <h1> counter</h1>
+                 <h1 > {this.state.letter}</h1>
+                 <button onClick={this. handleRandomClicked}>say it loud </button>
+                
+                 </div>
+            )
+        }
+    }
+          
+ReactDOM.render(<Greet />,rootHandle)
+    </script>
+</body>
+
+</html>

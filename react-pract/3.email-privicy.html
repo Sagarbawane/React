@@ -1,0 +1,64 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+
+const users = [
+            { id: 101, name: 'user1', email: 'sagarbawaane460@gmail.com'},
+            { id: 202, name: 'user2', email: 'user2@yahoo.com'},
+            { id: 303, name: 'user3', email: 'user3@gmail.com'},
+            { id: 404, name: 'user4', email: 'user4@gmail.com'},
+            ]
+
+            function UserList(props){
+                const emails=(ele)=>{
+                    alert(`Email-Id (${ele.email})`)
+                }
+                return(
+                    <table border="1">
+        <thead>
+            <tr>
+                <th> Id </th> 
+                <th> Name </th>
+                <th> email </th> 
+                <th> action </th> 
+
+                 
+            </tr> 
+        </thead> 
+        <tbody>{
+            props.data.map(function(ele){
+                return(
+                        <tr>
+                            <td> { ele.id } </td> 
+                            <td> {ele.name} </td>
+                            <td> {ele.email.replace(ele.email,'*****@gmail.com')} </td> 
+                            <td> <button onClick={()=>{emails(ele)}}>click</button> </td> 
+                        </tr> 
+                )
+                    
+            })
+            
+        }
+        </tbody>
+    </table>
+                )
+
+            }
+            ReactDOM.render(<UserList data={users}/>, document.getElementById('root'))
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+ <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+ <script src="./js/react.development.js"></script>
+ <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+ <script src="./js/react-dom.development.js"></script>
+ <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+ <script src="./js/babel.js"></script>
+ <script type="text/babel">
+     const rootHandle = document.getElementById('root')
+   class Greet extends React.Component{
+       constructor(){
+           super()
+           this.state={
+               letter:'',
+               result:'',
+               count:16,
+             
+             
+              
+           }
+       }
+       handleChange=(e)=>{
+              const letter=e.target.value
+             
+      this.setState(function(prevState){
+
+         if(this.state.letter.length<16){
+            const count=parseInt(16-(this.state.letter+1))
+           
+            console.log(this.state.letter.length+1)
+            console.log(count)
+
+          return{
+              letter:letter,
+           
+
+              result:` you have character left ${this.state.count}`
+              
+            
+            
+          }
+         }
+      })
+       }
+
+       render(){
+           return(
+               <div>
+               <h1>REMAINING CHARACTER </h1>
+
+            <form>
+                <input type='text' placeholder='enter the string' value={this.state.letter} onChange={this.handleChange}/><br/>
+          
+
+<b>{this.state.result}</b>
+</form>
+
+
+
+              
+               </div>
+           )
+       }
+   }
+   ReactDOM.render(<Greet/>,rootHandle)
+    
+
+    </script>
+</body>
+
+</html>
+
+

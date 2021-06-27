@@ -1,0 +1,84 @@
+
+       
+        
+   <html>
+    <title>
+    </title>
+    
+    <body>
+        <div id="root"></div>
+    
+        <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+        <script src="./js/react.development.js"></script>
+        <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+        <script src="./js/react-dom.development.js"></script>
+        <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+              const emp = [
+                  {id:'emp 1',name:'abhi',gender:'male'},
+                   {id:'emp 2',name:'radha',gender:'female'} ,
+                   {id:'emp 3',name:'jetan',gender:'male'},
+                     {id:'emp 4',name:'radha',gender:'female'},
+    ]
+    
+            // filter all male employees 
+            const maleEmployees = emp.filter(function (emp) {
+                return emp.gender == 'male'
+            })
+    
+            const femaleEmployees = emp.filter(function (emp) {
+                return emp.gender == 'female'
+            })
+    
+            function EmployeeTable(props) {
+           return (
+            <table border="1">
+                    <thead>
+                        <tr>
+                            <th> id </th> 
+                            <th> gender </th>
+                            <th> name </th> 
+                             
+                        </tr> 
+                    </thead> 
+                    <tbody>
+                        {
+                            props.data.map(function(emp){
+                                return (
+                                    <tr>
+                                        <td> { emp.id } </td> 
+                                        <td> {emp.gender} </td>
+                                        <td> {emp.name} </td> 
+                                    </tr> 
+                                )
+                            })
+                        }    
+                    </tbody>
+                </table> 
+           
+
+           )
+            }
+    
+            // create ele 
+            const ele = (
+                <div>
+                    <h1> List All Employees - { emp.length } </h1> 
+                   {EmployeeTable({data:emp})}
+    
+                    <h1> Listing Male Employees - {maleEmployees.length} </h1>
+                    {EmployeeTable({data:maleEmployees})}
+    
+                    <h1> Listing female Employees - {femaleEmployees.length}</h1>
+                    {EmployeeTable({data:femaleEmployees})}
+                </div>
+            )
+    
+    
+            ReactDOM.render(ele, document.getElementById('root'))
+    
+        </script>
+    </body>
+    
+    </html>

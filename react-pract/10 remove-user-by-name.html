@@ -1,0 +1,92 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+    const rootHandle=document.getElementById('root')
+    class MovieList extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    list: [
+                        { id: 1, name: 'user1', email:'user1@gmail.com '},
+                        { id: 2, name: 'user2', email:'user2@gmail.com '},
+                        { id: 3, name: 'user3', email:'user3@gmail.com '}                     
+                    ]
+                }
+            }
+          
+            handleRemove = (id) => {
+                const Remove=prompt('enter your name')
+               
+                    if(id){
+                this.setState(function(prevState){
+                    return {
+                       
+                        list: prevState.list.filter((ele)=>{
+                          
+                            return ele.id != id
+                        
+                        })
+                    } 
+                    })
+                    }
+                
+                
+            }
+            
+
+            render(){
+                return (
+                    <div>
+                        <h1>Movie List - { this.state.list.length}</h1> 
+                        <table border="1">
+        <thead>
+            <tr>
+                <th> id </th> 
+                <th> name </th>
+                <th> action </th> 
+                 
+            </tr> 
+        </thead> 
+        <tbody>
+            {
+               this.state.list.map((lists)=>{
+            return(
+                         <tr>
+                            <td> {lists.id} </td> 
+                            <td> {lists.name} </td>
+                            <td> <button onClick={()=>{
+                                   this.handleRemove(lists.id)
+                            }}>remove</button>
+                             
+                            </td> 
+                        </tr> 
+            )
+                    })
+                    }  
+               
+        </tbody>
+    </table>
+                    </div> 
+                )
+            }
+        }
+
+        ReactDOM.render(<MovieList />, rootHandle)
+
+    </script>
+</body>
+
+</html>
+
+

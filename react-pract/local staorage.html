@@ -1,0 +1,50 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+ <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+ <script src="./js/react.development.js"></script>
+ <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+ <script src="./js/react-dom.development.js"></script>
+ <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+ <script src="./js/babel.js"></script>
+ <script type="text/babel">
+     const rootHandle = document.getElementById('root')
+  // local storage -create anew key value pair
+  localStorage.setItem('name','sagar')
+  localStorage.setItem('AGE',26)
+  //how to read value  from local storage
+  const name=localStorage.getItem('name')
+  console.log(name)
+  const company=localStorage.getItem('company')
+  console.log(company)//null
+  //remove a key value pair
+  //localstorage.removeItem('age')
+  //compleetly clear local storage
+  //localStorage.clear()
+
+  //STORE /ARRAY AND OBJECT in local strorage
+  //to store we need to convert it into json
+  const users =JSON.stringify([{id:1,name:'sagar'}])
+  localStorage.setItem('users,users')
+  const emp=JSON.stringify({
+      emp:1,
+      name:'sagar'
+  })
+  localStorage.setItem('employee',emp)
+  //read that information
+  console.log(JSON.parse(localStorage.users))
+  console.log(JSON.parse(localStorage.emp))
+  
+  
+    ReactDOM.render(<Counter />, rootHandle)
+    
+
+    </script>
+</body>
+
+</html>
+
+

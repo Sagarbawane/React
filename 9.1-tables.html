@@ -1,0 +1,93 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+    const rootHandle=document.getElementById('root')
+    const emp = [
+                  {id:'emp 1',name:'abhi',gender:'male'},
+                   {id:'emp 2',name:'radha',gender:'female'} ,
+                   {id:'emp 3',name:'jetan',gender:'male'},
+                     {id:'emp 4',name:'radha',gender:'female'},
+    ]
+        const male=emp.filter(function(ele){
+            return (
+                ele.gender=='male'
+            )
+        })
+        const female=emp.filter(function(ele){
+            return (
+                ele.gender=='female'
+            )
+        })
+
+        function NavBar(){
+            return(
+                <div>
+                <a href='#'>home</a> <a href='#'>gender</a>
+                </div>
+            )
+        }
+        function Greet(props){
+            return(
+                <div style={{backgroundColor:'#FFD662FF'}}>
+                    <table border="1">
+        <thead>
+            <tr>
+                <th> id </th> 
+                <th> name</th>
+                <th> gender</th> 
+               
+                 
+            </tr> 
+        </thead> 
+        <tbody>
+           
+               {
+                   props.data.map(function(emp){
+               return (
+                  
+                        <tr  >
+                            <td> { emp.id } </td> 
+                            <td> {emp.name} </td>
+                            <td> {emp.gender} </td> 
+                            
+                        
+                        </tr> 
+                       
+               )
+                    })
+               }
+          
+        </tbody>
+    </table> 
+                </div>
+            )
+        }
+        const ele=(
+            
+            <div style={{backgroundColor:'powderblue'}}>
+                <NavBar/>
+            <h1> list of url{emp.length}</h1>
+            <Greet data={emp}/>
+            <h1> list of url {male.length}</h1>
+            <Greet data={male}/>
+            <h1> list of url {female.length}</h1>
+            <Greet data={female}/>
+            </div>
+        )
+    
+ReactDOM.render(ele,rootHandle)
+    </script>
+</body>
+
+</html>

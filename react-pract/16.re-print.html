@@ -1,0 +1,78 @@
+<html>
+<title>
+</title>
+
+<body>
+    <div id="root"></div>
+ <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+ <script src="./js/react.development.js"></script>
+ <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+ <script src="./js/react-dom.development.js"></script>
+ <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+ <script src="./js/babel.js"></script>
+ <script type="text/babel">
+     const rootHandle = document.getElementById('root')
+   class Greet extends React.Component{
+       constructor(){
+           super()
+           this.state={
+               letter:'',
+               result:'',
+               result1:'',
+               result2:'',
+               result3:'',
+              
+           }
+       }
+       handleChange=(e)=>{
+              const letter=e.target.value
+      this.setState(function(prevState){
+          
+        
+
+         
+          return{
+              letter:letter,
+             result:<h1>h1{this.state.letter}</h1>,
+             result1:<h2>h2{this.state.letter}</h2>,
+             result2:<h3>h3{this.state.letter}</h3>,
+             result3:<p>p{this.state.letter}</p>,
+            
+          }
+      })
+       }
+
+       render(){
+           return(
+               <div>
+               <h1>RE-PRINT</h1>
+
+            <form>
+                <input type='text' placeholder='enter the string' value={this.state.letter} onChange={this.handleChange}/><br/>
+            </form>
+                
+           
+             <b>{this.state.result}</b><br/>
+                <b>{this.state.result1}</b><br/>
+                <b>{this.state.result2}</b><br/>
+                <b>{this.state.result3}</b><br/>
+               
+
+
+
+
+
+              
+               </div>
+           )
+       }
+   }
+   ReactDOM.render(<Greet/>,rootHandle)
+    
+
+    </script>
+</body>
+
+</html>
+
+
